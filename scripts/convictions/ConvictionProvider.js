@@ -4,17 +4,20 @@ export const useConvictions = () => {
     return convictions.slice()
 }
 
-export const ConvictionProvider = () => {
+
+
+
+
+export const getConvictions = () => {
     return fetch("https://criminals.glassdale.us/crimes")
         .then(response => response.json())
         .then(
-            ConvictionSelect => {
-                console.table(ConvictionSelect)
-                convictions = ConvictionSelect
+            crimeData => {
+                console.table(crimeData)
+                convictions = crimeData
             }
         )
 }
-
 //  export const gotconvictions = convictions
 // console.log(gotconvictions)
 

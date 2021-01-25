@@ -18,8 +18,10 @@ import {CriminalList} from './criminal/criminalList.js'
 
 CriminalList()
 
-import {Conviction} from './convictions/convictions.js'
-import {useConvictions} from './convictions/ConvictionProvider.js'
-import {ConvictionList} from './convictions/convictionList.js'
 
-ConvictionList()
+
+import { ConvictionSelect } from './convictions/ConvictionSelect.js'
+ConvictionSelect()
+
+// import { convictionsCollection} from './convictions/ConvictionSelect.js'
+// convictionsCollection ()
