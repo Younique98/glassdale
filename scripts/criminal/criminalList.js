@@ -13,7 +13,7 @@ export const CriminalList = () => {
             let criminalHTMLRepresentation = ""
 
             for (const criminal of criminals) {
-                criminalHTMLRepresentation += Criminal(criminals)
+                criminalHTMLRepresentation += Criminal(criminal)
 
             }
             criminalContainer.innerHTML = `
