@@ -17,3 +17,9 @@ import {useCriminals} from './criminal/CriminalProvider.js'
 import {CriminalList} from './criminal/criminalList.js'
 
 CriminalList()
+
+import {Conviction} from './convictions/convictions.js'
+import {useConvictions} from './convictions/ConvictionProvider.js'
+import {ConvictionList} from './convictions/convictionList.js'
+
+ConvictionList()
