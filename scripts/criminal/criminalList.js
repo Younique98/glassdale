@@ -24,3 +24,38 @@ export const CriminalList = () => {
         })
     
 }
+
+const eventHub = document.querySelector(".container")
+
+// Listen for the custom event you dispatched in ConvictionSelect
+eventHub.addEventListener('crimeChosen', event => {
+
+    // Use the property you added to the event detail.
+    if (event.detail.crimeThatWasChosen !== "0"){
+        /*
+            Filter the criminals application state down to the people that committed the crime
+        */
+       const criminalsArray = useCriminals()
+       debugger
+        const matchingCriminals =criminalsArray.filter(crimeThatWasChosen)
+
+        /*
+            Then invoke render() and pass the filtered collection as
+            an argument
+        */
+    }
+})
+
+const render = criminalCollection => {
+    contentTarget.innerHTML = criminalCollection
+}
+
+
+// // Render ALL criminals initally
+// export const CriminalList = () => {
+//     getCriminals()
+//         .then(() => {
+//             const appStateCriminals = useCriminals()
+//             render(appStateCriminals)
+//         })
+// }
