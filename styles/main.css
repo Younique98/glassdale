@@ -1,7 +1,39 @@
-.criminal {
-    /* display: grid; */
+/* .criminal {
+    display: grid;
     font-size: 16px;
-    border-style: dotted;
-   
-
+    border: 1px dotted blue;
 }
+   
+ /*
+
+
+.officer {
+    font-size: 16px;
+    border: 1px dotted blue;
+}
+
+/* .criminalsList {
+    font-size: 16px;
+    border: 1px dotted red;
+} */
+
+.criminalCard {
+    font-size: 16px;
+    border: 1px dotted pink;
+    margin: 0.5rem;
+  padding: 0.5rem;
+  flex-basis: 25%
+}
+
+.criminalsList, .officersList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: space-between;
+  }
+
+  .criminal, .officer {
+    margin: 0.5rem;
+    padding: 0.5rem;
+    flex-basis: 25%;
+  }
