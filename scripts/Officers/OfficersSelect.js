@@ -10,7 +10,7 @@ That's your Event Hub. Get a reference to it here.
 */
 const eventHub = document.querySelector(".container")
 // Get a reference to the DOM element where the <select> will be rendered
-const contentTarget = document.querySelector(".filters__crime")
+const contentTarget = document.querySelector(".filters__officer")
 
 // On the event hub, listen for a "change" event.
 eventHub.addEventListener("change", changeEvent => {
@@ -52,3 +52,44 @@ const render = OfficersCollection => {
         </select>
     `
 }
+
+// ------- Function to write dependency on selection of first drop down ----
+
+// const drop__parent = document.getElementById("criminalSelect")
+const drop__child = document.getElementById("officerSelect");
+
+const drop__parent = document.querySelector('.container')
+// for (key in OfficerSelect) {
+//     drop__parent.innerHTML = drop__parent.innerHTML + '<option>' + key + '</option>';
+
+// }
+
+// adding eventListener to parent select so that user selections an option and child gets populated
+
+drop__parent.addEventListener("change", event => {
+    if (event.target.id === "officerSelect") {
+        // debugger
+        // Create custom event. Provide an appropriate name.
+        const customEvent = new CustomEvent("crimeChosen", {
+            detail: {
+                crimeThatWasChosen: event.target.value
+            }
+        })
+
+        // Dispatch to event hub
+        eventHub.dispatchEvent(customEvent)
+    }
+})
+
+
+
+
+
+
+        //---- trying to fix error --- do not delete
+//         for (i = 0; i < parsedCriminals[item].length; i++) {
+//             drop__child.innerHTML = drop__child.innerHTML + '<option>' + parsedCriminals[item][i] + '</option>';
+//         }
+//         // drop__parent.dispatchEvent(customEvents)
+//     }
+// })

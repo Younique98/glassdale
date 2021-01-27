@@ -31,11 +31,11 @@ export const OfficerList = () => {
 }
  
 
- officersContainer.innerHTML =`
- <h3>Glassdale Officers</h3>
- <section class="officersList">
-     ${officerHTMLRepresentations}
- </section>`
+//  officersContainer.innerHTML =`
+//  <h3>Glassdale Officers</h3>
+//  <section class="officersList">
+//      ${officerHTMLRepresentations}
+//  </section>`
 
 })
 }
