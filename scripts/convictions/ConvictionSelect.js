@@ -1,14 +1,22 @@
-import { getConvictions, useConvictions } from "./ConvictionProvider.js"
+/*
+ *   ConvictionSelect component that renders a select HTML element
+ *   which lists all convictions in the Glassdale PD API
+ */
+import { useConvictions, getConvictions } from "./ConvictionProvider.js"
 
-
+/*
+Which element in your HTML contains all components?
+That's your Event Hub. Get a reference to it here.
+*/
 const eventHub = document.querySelector(".container")
+// Get a reference to the DOM element where the <select> will be rendered
 const contentTarget = document.querySelector(".filters__crime")
 
 // On the event hub, listen for a "change" event.
 eventHub.addEventListener("change", event => {
-
     // Only do this if the `crimeSelect` element was changed
     if (event.target.id === "crimeSelect") {
+        // debugger
         // Create custom event. Provide an appropriate name.
         const customEvent = new CustomEvent("crimeChosen", {
             detail: {
@@ -21,58 +29,24 @@ eventHub.addEventListener("change", event => {
     }
 })
 
-
-const render = convictionsCollection => {
-    contentTarget.innerHTML = `
-        <select class="dropdown" id="crimeSelect">
-            <option value="0">Please select a crime...</option>
-            ${ convictionsCollection.map(crime => { 
-                return `
-                <option value="${crime.id}">${crime.name}</option>
-                `
-            }) }
-        </select>
-    `
-}
-
-
 export const ConvictionSelect = () => {
+    // Trigger fetching the API data and loading it into application state
     getConvictions()
         .then(() => {
+            // Get all convictions from application state
             const convictions = useConvictions()
             render(convictions)
         })
 }
-// glassdale/scripts/criminal/CriminalList.js
 
-// const eventHub = document.querySelector(".container")
+const render = convictionsCollection => {
+    
 
-// Listen for the custom event you dispatched in ConvictionSelect
-eventHub.addEventListener('what custom event did you dispatch in ConvictionSelect?', event => {
-    // Use the property you added to the event detail.
-    if (event.detail.crimeThatWasChosen !== "0"){
-        /*
-            Filter the criminals application state down to the people that committed the crime
-        */
-        const matchingCriminals = appStateCriminals.filter()
-
-        /*
-            Then invoke render() and pass the filtered collection as
-            an argument
-        */
-    }
-})
-
-// const render = criminalCollection => {
-//     contentTarget.innerHTML = you_fill_this_in
-// }
-
-
-// Render ALL criminals initally
-export const CriminalList = () => {
-    getCriminals()
-        .then(() => {
-            const appStateCriminals = useCriminals()
-            render(appStateCriminals)
-        })
+    contentTarget.innerHTML = `
+        <select class="dropdown" id="crimeSelect">
+            <option value="0">Please select a crime...</option>
+            ${convictionsCollection.map(conviction => `<option value="${conviction.id}">${conviction.name}</option>`).join("")
+        }
+        </select>
+    `
 }
