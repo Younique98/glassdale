@@ -16,7 +16,7 @@ const contentTarget = document.querySelector(".filters__crime")
 eventHub.addEventListener("change", event => {
     // Only do this if the `crimeSelect` element was changed
     if (event.target.id === "crimeSelect") {
-        // debugger
+        
         // Create custom event. Provide an appropriate name.
         const customEvent = new CustomEvent("crimeChosen", {
             detail: {
