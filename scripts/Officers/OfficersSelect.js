@@ -48,6 +48,7 @@ const render = OfficersCollection => {
         <select class="dropdown" id="officerSelect">
             <option value="0">Please select a officer...</option>
             ${OfficersCollection.map(officer => `<option value="${officer.id}">${officer.name}</option>`).join("")
+        
         }
         </select>
     `
@@ -69,7 +70,8 @@ const drop__parent = document.querySelector('.container')
 drop__parent.addEventListener("change", event => {
     if (event.target.id === "officerSelect") {
         // debugger
-        // Create custom event. Provide an appropriate name.
+        
+    // Create custom event. Provide an appropriate name.
         const customEvent = new CustomEvent("crimeChosen", {
             detail: {
                 crimeThatWasChosen: event.target.value

@@ -13,7 +13,7 @@ export const getConvictions = () => {
         .then(response => response.json())
         .then(
             crimeData => {
-                console.table(crimeData)
+                //console.table(crimeData)
                 convictions = crimeData
             }
         )
