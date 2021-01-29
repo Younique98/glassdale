@@ -1,35 +1,47 @@
-mport { getNotes, useNotes } from "./NoteProvider.js";
+import { getNotes, useNotes } from "./NoteDataProvider.js";
 import { NoteHTMLConverter } from "./Note.js";
 
 // Query the DOM for the element that your notes will be added to 
-const contentTarget = document.querySelector(".noteListContainer")
+const contentTarget = document.querySelector(".noteContainer")
 // Define ye olde Evente Hubbe
-const eventHub = document.querySelector(".noteList")
+const eventHub = document.querySelector(".container")
 
+//----This may break, i added customEvent inside of NoteList at line
 eventHub.addEventListener("showNotesClicked", customEvent => {
     NoteList()
 })
 
 const render = (noteArray) => {
-    const allNotesConvertedToStrings = noteArray.map(
+    const allNotesConvertedToStrings = noteArray.map(noteObject => {
+        return NoteHTMLConverter(noteObject)
+    }).join("")
         // convert the notes objects to HTML with NoteHTMLConverter
 
-    ).join("")
+    
+    contentTarget.innerHtml = `
+    <h3>Case Notes</h3>
+    <section class="noteslist">
+    ${allNotesConvertedToStrings}
+    </section>
+    `
 
-    contentTarget.innerHTML = `
-    <select class="noteDropDown" id="noteEnterData">
-        <option value="0">Please enter information...</option>
-        ${noteArray.map(notesTyped => `<option value="${notesTyped.id}">${notesTyped.name}</option>`).join("")
-    }
-    </select>
-`
 }
 
-// Standard list function you're used to writing by now. BUT, don't call this in main.js! Why not?
 export const NoteList = () => {
-    getNotes()
-        .then(() => {
-            const allNotes = useNotes()
-            render(allNotes)
-        })
+getNotes()
+.then(() => {
+    const allNotes = useNotes()
+    render(allNotes)
+    })
 }
+
+// eventHub.addEventListener("noteStateChanged", event => {
+//    if (contentTarget.innerHtml !== "") {
+//        NoteList()
+//    }
+// })
+
+        
+
+
+    
