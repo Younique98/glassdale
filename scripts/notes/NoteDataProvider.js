@@ -19,14 +19,32 @@ export const getNotes = () => {
 
 export const  useNotes = () => notes.slice()
 
-export const saveNote = note => {
+// export const saveNote = notes => {
+//     debugger
+//     return fetch('http://localhost:8088/notes', {
+//         method: "POST",
+//     headers: {
+//       "Content-Type": "application/json"
+//     },
+//     body: JSON.stringify(notes)
+    
+//   })
+ 
+//     .then(() => getNotes())
+//     .then(dispatchStateChangeEvent)
+// }
+
+export const saveNote = notes => {
+    let stringifiedObj = JSON.stringify(notes)
+    
+    
     return fetch('http://localhost:8088/notes', {
         method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(note)
-  })
-    .then(() => getNotes())
-    .then(dispatchStateChangeEvent)
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: stringifiedObj
+    })
+    .then(getNotes) // fetch the notes collection containing the newly added note
+    .then(dispatchStateChangeEvent) // tell any component listening that the notes state has been updated
 }
