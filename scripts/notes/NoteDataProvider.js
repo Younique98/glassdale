@@ -20,7 +20,7 @@ export const getNotes = () => {
 export const  useNotes = () => notes.slice()
 
 // export const saveNote = notes => {
-//     debugger
+
 //     return fetch('http://localhost:8088/notes', {
 //         method: "POST",
 //     headers: {
