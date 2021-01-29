@@ -14,7 +14,7 @@ eventHub.addEventListener("showNotesClicked", customEvent => {
 
 const render = (noteArray) => {
     const allNotesConvertedToStrings = noteArray.map(noteObject =>  NoteHTMLConverter(noteObject)).join("")
-    debugger
+    
     
         // convert the notes objects to HTML with NoteHTMLConverter
 

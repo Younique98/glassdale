@@ -31,7 +31,7 @@ export const NoteForm = () => {
 eventHub.addEventListener("click", clickEvent => {
     // clickEvent.preventDefault()
     if (clickEvent.target.id === "saveNote") {
-        debugger
+        
         const suspect = document.getElementById("note-suspect").value
         const author = document.getElementById("note-author").value
         const date = document.getElementById("note-date").value
