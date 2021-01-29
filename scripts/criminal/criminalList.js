@@ -43,7 +43,7 @@ eventHub.addEventListener("crimeChosen", event => {
 
     // Use the find method to get the first object in the convictions array that has the same id as the id of the chosen crime
     const convictionThatWasChosen = convictionsArray.find(convictionObj => {
-     // console.log(convictionObj)
+      console.log(convictionObj)
       return convictionObj.id === parseInt(event.detail.crimeThatWasChosen)
     })
 
@@ -65,11 +65,14 @@ eventHub.addEventListener("crimeChosen", event => {
       Now that we have the name of the chosen crime, filter the criminals data down to the people that committed the crime
     */
     
-    const filteredCriminalsArray = criminalsArray.filter(criminalObj => criminalObj.conviction === chosenConvictionObject.name)
-     // console.log(convictionThatWasChosen, "latest")
+   const filteredCriminalsArray = criminalsArray.filter(criminalObj => {
+    console.log(convictionThatWasChosen, "latest")
+    return criminalObj.conviction === convictionThatWasChosen.name
+  })
       renderToDom(filteredCriminalsArray)
     }
-      })
+      }
+      )
 
     /*
         Then invoke render() and pass the filtered collection as
@@ -79,8 +82,8 @@ eventHub.addEventListener("crimeChosen", event => {
     
 
 eventHub.addEventListener("officerSelected", event => {
-  const officerName = event.detail.selectedOfficerName
-
+  const officerName = event.detail.officer
+console.log(event.detail.officer)
   // How can you get the criminals that were arrested by that officer?
   const criminals = useCriminals()
   const filteredCriminalsArray = criminals.filter (
@@ -92,5 +95,6 @@ eventHub.addEventListener("officerSelected", event => {
   )
 
   //Render filtered criminals to DOM
+  console.log(officerName)
   renderToDom(filteredCriminalsArray)
 })
