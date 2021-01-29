@@ -26,7 +26,8 @@ const renderToDom = (criminalCollection) => {
         <h3>Criminals</h3>
         <section class="criminalsList">
         ${criminalsHTMLRepresentations}
-        </section>`
+        </section>
+        `
 }
 
 
