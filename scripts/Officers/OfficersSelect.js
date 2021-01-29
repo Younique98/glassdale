@@ -14,7 +14,7 @@ const contentTarget = document.querySelector(".filters__officer")
 
 // On the event hub, listen for a "change" event.
 eventHub.addEventListener("change", changeEvent => {
-    console.log(changeEvent)
+    //console.log(changeEvent)
     if (changeEvent.target.id === "officerSelect") {
         // Get the name of the selected officer
         const selectedOfficer = changeEvent.target.value
