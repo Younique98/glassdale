@@ -22,18 +22,14 @@ const render = () => {
   `
 }
 
-// export const NoteForm = () => {
-//     debugger
-//     render()
-// }
+
 export const NoteForm = () => {
-    debugger
     render()
 }
 
 // Handle browser-generated click event in component
 eventHub.addEventListener("click", clickEvent => {
-    clickEvent.preventDefault()
+    // clickEvent.preventDefault()
     if (clickEvent.target.id === "saveNote") {
         debugger
         const suspect = document.getElementById("note-suspect").value
@@ -60,7 +56,7 @@ eventHub.addEventListener("click", clickEvent => {
 
         // Change API state and application state
         saveNote(newNote)
-        NoteList()
+        // NoteList()
     }
 })
 

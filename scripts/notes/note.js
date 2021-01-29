@@ -10,5 +10,7 @@ export const NoteHTMLConverter = (noteObject) => {
         <div class="note__date">Intuition: ${noteObject.intuition}</div>
     </section>
 `
+
 }
+
 
