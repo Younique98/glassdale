@@ -43,11 +43,11 @@ eventHub.addEventListener("crimeChosen", event => {
 
     // Use the find method to get the first object in the convictions array that has the same id as the id of the chosen crime
     const convictionThatWasChosen = convictionsArray.find(convictionObj => {
-      console.log(convictionObj)
+      //console.log(convictionObj)
       return convictionObj.id === parseInt(event.detail.crimeThatWasChosen)
     })
 
-      console.log(convictionThatWasChosen.name)
+     // console.log(convictionThatWasChosen.name)
     /*
         Filter the criminals application state down to the people that committed the crime
     */
@@ -60,7 +60,7 @@ eventHub.addEventListener("crimeChosen", event => {
 
     })
 
-      console.log(chosenConvictionObject.name)
+      //console.log(chosenConvictionObject.name)
     /*
       Now that we have the name of the chosen crime, filter the criminals data down to the people that committed the crime
     */
@@ -83,7 +83,7 @@ eventHub.addEventListener("crimeChosen", event => {
 
 eventHub.addEventListener("officerSelected", event => {
   const officerName = event.detail.officer
-console.log(event.detail.officer)
+//console.log(event.detail.officer)
   // How can you get the criminals that were arrested by that officer?
   const criminals = useCriminals()
   const filteredCriminalsArray = criminals.filter (
