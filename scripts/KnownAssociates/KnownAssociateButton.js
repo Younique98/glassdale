@@ -24,7 +24,7 @@ eventHub.addEventListener("click", clickEvent => {
         console.log(prefix, clickEvent)
        
         const customEvent = new CustomEvent("showAssociatesClicked", {
-            detail: {criminalIDTaco: criminalId}
+            detail: {criminalIdTaco: criminalId}
         })
         eventHub.dispatchEvent(customEvent)
         

@@ -1,4 +1,5 @@
 
+import { useCriminals } from "../criminal/CriminalProvider.js"
 import { KnownAssociate } from "../KnownAssociates/theAssociate.js"
 
 // Query the DOM for the element that your notes will be added to 
@@ -8,7 +9,18 @@ const eventHub = document.querySelector(".container")
 
 //----This may break, i added customEvent inside of NoteList at line
 eventHub.addEventListener("showAssociatesClicked", customEvent => {
-    console.log("yikes")
+    const clickedAssociatesId = customEvent.detail.criminalIdTaco
+    console.log(clickedAssociatesId, "detail")
+    const knownAssociates = useCriminals()
+    const associates = knownAssociates.find(criminalObjectTaco => {
+        return criminalObjectTaco.id === parseInt(clickedAssociatesId)
+    })
+    console.log(KnownAssociate)
+    console.log(associates)
+   
+    
+  
+
 })
 
 
@@ -40,4 +52,14 @@ const render = (criminalAssociateArray) => {
         
 
 
-    
+// let KnownAssociateHTMLRepresentation = ""
+// KnownAssociateHTMLRepresentation.innerHTML =  `
+// <h3>Known Associates</h3>
+// <p class="criminal__knownAssociate"> Known Associate: ${criminal.known_associates[0].name}    </p>
+// //     <p class="criminal__alibis"> Alibis Provided: ${criminal.known_associates[0].alibi}    </p>
+// <section class="criminalAssociateList">
+// ${allAssociatesConvertedToStrings.name},
+// ${allAssociatesConvertedToStrings.alibi}
+// console.log("yikes")
+// </section>`
+// return KnownAssociateHTMLRepresentation
