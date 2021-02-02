@@ -49,7 +49,7 @@
   display: flex;
 }
 
-.note {
+.note, .criminalsAssociate {
   border: 1px dotted orchid;
 }
 
@@ -94,3 +94,18 @@
       background: #ffc
     }
    
+    
+    .criminalsAssociate {
+      display: flex;
+      flex-direction: column;
+      display:flex;
+      /* background-color: #3CBC8D; */
+      text-decoration:none;
+  color:#000;
+  /* background:#ffc; */
+  display:block;
+  height:10em;
+  width:10em;
+  padding:1em;
+      
+    }
