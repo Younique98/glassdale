@@ -1,65 +1,34 @@
 
 import { useCriminals } from "../criminal/CriminalProvider.js"
 import { KnownAssociate } from "../KnownAssociates/theAssociate.js"
-
+import { ShowAssociatesButton } from "../KnownAssociates/KnownAssociateButton.js"
 // Query the DOM for the element that your notes will be added to 
-const contentTarget = document.querySelector(".criminalAssociate")
+const associateContainer = document.querySelector(".criminalsAssociate")
 // Define ye olde Evente Hubbe
 const eventHub = document.querySelector(".container")
 
 //----This may break, i added customEvent inside of NoteList at line
 eventHub.addEventListener("showAssociatesClicked", customEvent => {
     const clickedAssociatesId = customEvent.detail.criminalIdTaco
-    console.log(clickedAssociatesId, "detail")
+    // console.log(clickedAssociatesId, "detail")
     const knownAssociates = useCriminals()
+    //useCriminals() is an array but also knownAssociates is too
     const associates = knownAssociates.find(criminalObjectTaco => {
+        //find method returns 
         return criminalObjectTaco.id === parseInt(clickedAssociatesId)
     })
-    console.log(KnownAssociate)
-    console.log(associates)
-   
+    // console.log(KnownAssociate)
     
-  
-
+   renderToDom(associates)
+   //associates is from line 16 and pulls in the obj from being looped over in line 16 and the find method returns the first thing that happens to be an object within there. looks at the website if you need to
 })
 
+// use line 15 "associates " to create a render function and return a object using innerHtml and pass  associates through it
 
-const render = (criminalAssociateArray) => {
-    const allAssociatesConvertedToStrings = criminalAssociateArray.map(criminalAssociateObject =>  KnownAssociate(criminalAssociateObject)).join("")
-    
-    
-        // convert the notes objects to HTML with NoteHTMLConverter
 
-    
-    contentTarget.innerHTML = `
-    <h3>Known Associates</h3>
-    <section class="criminalAssociateList">
-    ${allAssociatesConvertedToStrings.name},
-    ${allAssociatesConvertedToStrings.alibi}
-    </section>
-    `
-
+const renderToDom = (associate) => {
+// on container take the KnownAssociate function and put the taco associate in there
+       associateContainer.innerHTML += KnownAssociate(associate)
+         
 }
-
-// export const KnownAssociateList = () => {
-// .then(() => {
-//     const allAssociates = useCriminals()
-//     render(allAssociates)
-//     })
     
-// }
-
-        
-
-
-// let KnownAssociateHTMLRepresentation = ""
-// KnownAssociateHTMLRepresentation.innerHTML =  `
-// <h3>Known Associates</h3>
-// <p class="criminal__knownAssociate"> Known Associate: ${criminal.known_associates[0].name}    </p>
-// //     <p class="criminal__alibis"> Alibis Provided: ${criminal.known_associates[0].alibi}    </p>
-// <section class="criminalAssociateList">
-// ${allAssociatesConvertedToStrings.name},
-// ${allAssociatesConvertedToStrings.alibi}
-// console.log("yikes")
-// </section>`
-// return KnownAssociateHTMLRepresentation
