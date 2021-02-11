@@ -17,22 +17,9 @@ export const getNotes = () => {
 
 }
 
-export const  useNotes = () => notes.slice()
+export const  useNotes = () => { 
+    return notes.toString().slice()}
 
-// export const saveNote = notes => {
-
-//     return fetch('http://localhost:8088/notes', {
-//         method: "POST",
-//     headers: {
-//       "Content-Type": "application/json"
-//     },
-//     body: JSON.stringify(notes)
-    
-//   })
- 
-//     .then(() => getNotes())
-//     .then(dispatchStateChangeEvent)
-// }
 
 export const saveNote = notes => {
     let stringifiedObj = JSON.stringify(notes)
