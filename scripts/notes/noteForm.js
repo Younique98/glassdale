@@ -1,14 +1,33 @@
+import { getCriminals, useCriminals } from "../criminal/CriminalProvider.js"
 import { saveNote } from "./NoteDataProvider.js" 
-import { NoteList } from "./noteList.js"
+
+
 
 const eventHub = document.querySelector(".container")
 const contentTarget = document.querySelector(".noteFormContainer")
 
-const render = () => {
+export const NoteForm = () => {
+    // Trigger fetching the API data and loading it into application state
+    getCriminals()
+        .then(() => {
+           
+            const criminalsArray = useCriminals()
+            render(criminalsArray)
+        })
+}
+
+const render = (criminalsArray) => {
+    
     contentTarget.innerHTML = `
+    <h2>Notes about criminals</h2>
     <form action="">
-      <label for="note-suspect">Suspect: </label>
-      <input type="text" id="note-suspect">
+    <fieldset>
+      <label for="note-criminalId">Suspect: </label>
+      <select name="note-criminalId" id="note-criminalId">
+      <option value="0">Please select a criminal...</option>
+      ${criminalsArray.map(criminal => `<option value="${criminal.id}">${criminal.name}</option>`).join("")
+    }
+    </select>
       <label for="note-author">Author: </label>
       <input type="text" id="note-author">
       <label for="note-date">Date: </label>
@@ -19,20 +38,22 @@ const render = () => {
       <input type="text" id="note-text">
       <button id="saveNote">Save Note</button>
     </form>
-  `
+    `
 }
 
 
-export const NoteForm = () => {
-    render()
-}
+
+
+// export const NoteForm = () => {
+//     render()
+// }
 
 // Handle browser-generated click event in component
 eventHub.addEventListener("click", clickEvent => {
     // clickEvent.preventDefault()
     if (clickEvent.target.id === "saveNote") {
         
-        const suspect = document.getElementById("note-suspect").value
+        const criminalId = document.getElementById("note-criminalId").value
         const author = document.getElementById("note-author").value
         const date = document.getElementById("note-date").value
         const intuition = document.getElementById("note-intuition").value
@@ -41,12 +62,11 @@ eventHub.addEventListener("click", clickEvent => {
        
         const newNote = {
             // Key/value pairs here
-                suspect : suspect,
-                author: author, 
-                date: date,
-                intuition: intuition,
-                text: text
-                
+                "text": text,
+                "criminalId": parseInt(criminalId),
+                "date": date,
+                "author": author,
+                "intuition": intuition
                 
                 
                 
