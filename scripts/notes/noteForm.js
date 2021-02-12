@@ -42,16 +42,10 @@ const render = (criminalsArray) => {
 }
 
 
-
-
-// export const NoteForm = () => {
-//     render()
-// }
-
 // Handle browser-generated click event in component
 eventHub.addEventListener("click", clickEvent => {
-    // clickEvent.preventDefault()
     if (clickEvent.target.id === "saveNote") {
+        clickEvent.preventDefault()
         
         const criminalId = document.getElementById("note-criminalId").value
         const author = document.getElementById("note-author").value

@@ -18,7 +18,7 @@ export const getNotes = () => {
 }
 
 export const  useNotes = () => { 
-    return notes.toString().slice()}
+    return notes.slice()}
 
 
 export const saveNote = notes => {
@@ -34,4 +34,11 @@ export const saveNote = notes => {
     })
     .then(getNotes) // fetch the notes collection containing the newly added note
     .then(dispatchStateChangeEvent) // tell any component listening that the notes state has been updated
+}
+
+export const deleteNote = noteId => {
+    return fetch(`http://localhost:8088/notes/${noteId}`, {
+        method: "DELETE"
+    })
+        .then(getNotes)
 }
