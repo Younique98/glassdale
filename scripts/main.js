@@ -7,6 +7,8 @@ import { OfficerSelect } from "./Officers/OfficersSelect.js"
 import "./notes/NoteList.js"
 import { ShowAssociatesButton } from "./KnownAssociates/KnownAssociateButton.js";
 import "./KnownAssociates/KnownAssociateList.js"
+import { useFacilities } from "./facility/FacilityProvider.js"
+
 
 OfficerList()
 CriminalList()
@@ -15,3 +17,4 @@ OfficerSelect()
 NoteForm()
 ShowNoteButton()
 ShowAssociatesButton()
+useFacilities()
