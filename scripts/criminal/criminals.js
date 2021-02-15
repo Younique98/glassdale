@@ -1,5 +1,5 @@
 export const Criminal = (criminal, facilities) => {
-    console.log(facilities)
+    // console.log(facilities)
     return `
     
     <div class="criminal">

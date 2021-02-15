@@ -8,13 +8,16 @@ import "./notes/NoteList.js"
 import { ShowAssociatesButton } from "./KnownAssociates/KnownAssociateButton.js";
 import "./KnownAssociates/KnownAssociateList.js"
 import { useFacilities } from "./facility/FacilityProvider.js"
-
+import { DisplayFacilitiesButton } from "./facility/DisplayFacilitiesButton.js"
+import { FacilityList } from "./facility/FacilityList.js";
 
 OfficerList()
 CriminalList()
+FacilityList()
 ConvictionSelect()
 OfficerSelect()
 NoteForm()
 ShowNoteButton()
 ShowAssociatesButton()
 useFacilities()
+DisplayFacilitiesButton()
