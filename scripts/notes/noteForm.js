@@ -19,8 +19,9 @@ export const NoteForm = () => {
 const render = (criminalsArray) => {
     
     contentTarget.innerHTML = `
+    
+    <form class="criminalFormBox" action="">
     <h2>Notes about criminals</h2>
-    <form action="">
     <fieldset>
       <label for="note-criminalId">Suspect: </label>
       <select name="note-criminalId" id="note-criminalId">
