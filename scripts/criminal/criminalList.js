@@ -78,10 +78,11 @@ eventHub.addEventListener("crimeChosen", event => {
     */
     
    const filteredCriminalsArray = criminalsArray.filter(criminalObj => {
-    //console.log(convictionThatWasChosen, "latest")
+    
     return criminalObj.conviction === convictionThatWasChosen.name
   })
   const facilities = useFacilities()
+  console.log(facilities)
               const crimFac = useCriminalFacilities()
               const criminals = useCriminals()
 

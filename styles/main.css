@@ -1,81 +1,65 @@
-/* .criminal {
-    display: grid;
-    font-size: 16px;
-    border: 1px dotted blue;
-}
-   
- /*
-
-
-.officer {
-    font-size: 16px;
-    border: 1px dotted blue;
+body {
+  background-color: #c7e3ff;
 }
 
-/* .criminalsList {
-    font-size: 16px;
-    border: 1px dotted red;
-} */
+.criminal{
+  display: block;
+ float: left;
+ padding: 10px 3px;
+ border: 5px;
+ width: calc(100% / 5 - 10px);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  transition: 0.3s;
+  background-color: lavender;
+}
 
-.criminalsList, .officersList, .notesList {
+.criminal:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.criminal button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 10px 24px;
+  color: white;
+  background-color: #008CBA;;
+  text-align: center;
+  cursor: pointer;
+  width: 170px;
+  font-size: 16px;
+}
+
+.criminal button:hover {
+  opacity: 0.7;
+}
+
+.criminal__name  {
+  color: grey;
+  font-size: 18px;
+}
+
+.leftContainer {
+  display: block;
+  width: 70%;
+  padding: 12px 16px;
+}
+
+.rightContainer {
+  padding: 12px 16px;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  align-content: space-between;
-  
+  flex-basis: 40%;
+
 }
 
-.criminal, .officer, .note {
-  margin: 0.5rem;
-  padding: 0.5rem;
-  flex-basis: 25%;
-}
 
-.criminal {
-  border: 1px dotted red;
-}
-
-.officer {
-  border: 1px dotted blue;
-}
-
-.notesAside {
+.noteFormContainer {
+  background-color: lightgreen;
   display: flex;
-  flex-direction: column;
-  
-}
-
-.caseDataContainer {
-  display: flex;
-}
-
-.note, .criminalsAssociate {
-  border: 1px dotted orchid;
-}
-
-.criminalCard {
-    font-size: 16px;
-    border: 1px dotted pink;
-    margin: 0.5rem;
-  padding: 0.5rem;
-  flex-basis: 25%
-}
-
-.criminalsList, .officersList {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-content: space-between;
-  }
-
-  .criminal, .officer {
-    margin: 0.5rem;
-    padding: 0.5rem;
-    flex-basis: 25%;
-  }
-
-    .noteFormContainer {
-  background-color: lightgreen
+  flex-basis: 30%;
+  padding: 2px 16px;
     }
 
     .noteButton {
@@ -93,19 +77,39 @@
       
       background: #ffc
     }
-   
-    
+
+
     .criminalsAssociate {
       display: flex;
       flex-direction: column;
-      display:flex;
+    
       /* background-color: #3CBC8D; */
       text-decoration:none;
   color:#000;
   /* background:#ffc; */
   display:block;
-  height:10em;
+  height:1em;
   width:10em;
   padding:1em;
       
     }
+
+  .leftContainer .criminal:first-child {
+    margin-left: 0;
+  }
+
+  .leftContainer .criminal:nth-child(5n) {
+    margin-left: 0;
+  }
+
+  .officersList{
+    text-align: center;
+    color: rgb(6, 6, 102);
+    
+
+  }
+
+  /* .criminalFormBox{
+    display: flex;
+    width: 30%;
+  } */
