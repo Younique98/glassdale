@@ -3,7 +3,7 @@ import { useCriminals } from "../criminal/CriminalProvider.js"
 import { KnownAssociate } from "../KnownAssociates/theAssociate.js"
 import { ShowAssociatesButton } from "../KnownAssociates/KnownAssociateButton.js"
 // Query the DOM for the element that your notes will be added to 
-const associateContainer = document.querySelector(".criminalsAssociate")
+const associateContainer = document.querySelector(".criminalsAssociates")
 // Define ye olde Evente Hubbe
 const eventHub = document.querySelector(".container")
 

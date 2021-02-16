@@ -5,7 +5,7 @@ body {
 .criminal{
   display: block;
  float: left;
- padding: 10px 3px;
+ /* padding: 10px 3px; */
  border: 5px;
  width: calc(100% / 5 - 10px);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -23,13 +23,13 @@ body {
   border: none;
   outline: 0;
   display: inline-block;
-  padding: 10px 24px;
+  padding: 5px 10px;
   color: white;
   background-color: #008CBA;;
   text-align: center;
   cursor: pointer;
-  width: 170px;
-  font-size: 16px;
+  width: 130px;
+  font-size: 12px;
 }
 
 .criminal button:hover {
@@ -113,3 +113,5 @@ body {
     display: flex;
     width: 30%;
   } */
+
+  

@@ -1,6 +1,6 @@
 
 
-const contentTarget = document.querySelector(".criminalsAssociate")
+const contentTarget = document.querySelector(".knownButtonPlacement")
 const eventHub = document.querySelector(".container")
 
 eventHub.addEventListener("click", clickEvent => {
