@@ -2,12 +2,12 @@ body {
   background-color: #c7e3ff;
 }
 
-.criminal{
+.criminal {
   display: block;
- float: left;
- /* padding: 10px 3px; */
- border: 5px;
- width: calc(100% / 5 - 10px);
+  float: left;
+  
+  border: 5px;
+  width: calc(100% / 5 - 10px);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 300px;
   margin: auto;
@@ -17,7 +17,7 @@ body {
 }
 
 .criminal:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .criminal button {
   border: none;
@@ -25,7 +25,7 @@ body {
   display: inline-block;
   padding: 5px 10px;
   color: white;
-  background-color: #008CBA;;
+  background-color: #008cba;
   text-align: center;
   cursor: pointer;
   width: 130px;
@@ -36,7 +36,7 @@ body {
   opacity: 0.7;
 }
 
-.criminal__name  {
+.criminal__name {
   color: grey;
   font-size: 18px;
 }
@@ -51,67 +51,53 @@ body {
   padding: 12px 16px;
   display: flex;
   flex-basis: 40%;
-
 }
-
 
 .noteFormContainer {
   background-color: lightgreen;
   display: flex;
   flex-basis: 30%;
   padding: 2px 16px;
-    }
+}
 
-    .noteButton {
-      display:flex;
-      /* background-color: #3CBC8D; */
-      text-decoration:none;
-  color:#000;
-  /* background:#ffc; */
-  display:block;
-  height:10em;
-  width:10em;
-  padding:1em;
-    }
-    .noteslist{
-      
-      background: #ffc
-    }
-
-
-    .criminalsAssociate {
-      display: flex;
-      flex-direction: column;
-    
-      /* background-color: #3CBC8D; */
-      text-decoration:none;
-  color:#000;
-  /* background:#ffc; */
-  display:block;
-  height:1em;
-  width:10em;
-  padding:1em;
-      
-    }
-
-  .leftContainer .criminal:first-child {
-    margin-left: 0;
-  }
-
-  .leftContainer .criminal:nth-child(5n) {
-    margin-left: 0;
-  }
-
-  .officersList{
-    text-align: center;
-    color: rgb(6, 6, 102);
-    
-
-  }
-
-  /* .criminalFormBox{
-    display: flex;
-    width: 30%;
-  } */
-
+.noteButton {
+  display: flex;
   
+  text-decoration: none;
+  color: #000;
+  
+  display: block;
+  height: 10em;
+  width: 10em;
+  padding: 1em;
+}
+.noteslist {
+  background: #ffc;
+}
+
+.criminalsAssociate {
+  display: flex;
+  flex-direction: column;
+
+ 
+  text-decoration: none;
+  color: #000;
+
+  display: block;
+  height: 1em;
+  width: 10em;
+  padding: 1em;
+}
+
+.leftContainer .criminal:first-child {
+  margin-left: 0;
+}
+
+.leftContainer .criminal:nth-child(5n) {
+  margin-left: 0;
+}
+
+.officersList {
+  text-align: center;
+  color: rgb(6, 6, 102);
+}

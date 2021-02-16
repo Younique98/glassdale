@@ -10,11 +10,12 @@ import "./KnownAssociates/KnownAssociateList.js"
 import { useFacilities } from "./facility/FacilityProvider.js"
 
 
+
 OfficerList()
 CriminalList()
 ConvictionSelect()
 OfficerSelect()
 NoteForm()
-ShowNoteButton()
+ShowNoteButton 
 ShowAssociatesButton()
 useFacilities()
