@@ -1,25 +1,22 @@
+import "./theAssociate.js";
+import "./knownAssociateList.js"
 
+const eventHub = document.querySelector(".container");
 
-const contentTarget = document.querySelector(".knownButtonPlacement")
-const eventHub = document.querySelector(".container")
-
-eventHub.addEventListener("click", clickEvent => {
-    
-    if (clickEvent.target.id.startsWith("associates--")) {
-        
-        const [prefix, criminalId] = clickEvent.target.id.split("--")
-        // console.log(prefix, clickEvent)
-       
+eventHub.addEventListener("click", (clickEvent) => {
+  if (clickEvent.target.id.startsWith("associates--")) {
+    const [prefix, criminalId] = clickEvent.target.id.split("--");
         const customEvent = new CustomEvent("showAssociatesClicked", {
-            detail: {criminalIdTaco: criminalId}
-        })
-        eventHub.dispatchEvent(customEvent)
-        
-    }
-})
+      detail: { 
+          criminalIdTaco: parseInt(criminalId)
+         },
+    });
+    eventHub.dispatchEvent(customEvent);
+  }
+});
 
-export const ShowAssociatesButton = () => {
-    
-    contentTarget.innerHTML += "<button id='showAssociates'>Known Associates</button>"
-    
-}
+export const ShowAssociatesButton = (criminalObj) => {
+   
+    // debugger
+  return `<button id="associates--${criminalObj}">Associate Alibis</button>`
+};
