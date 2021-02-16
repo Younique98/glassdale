@@ -16,6 +16,7 @@ CriminalList()
 ConvictionSelect()
 OfficerSelect()
 NoteForm()
-ShowNoteButton 
-ShowAssociatesButton()
+ShowNoteButton() 
+
+// ShowAssociatesButton()
 useFacilities()

@@ -1,23 +1,9 @@
-let convictions = []    
+let convictions = [];
 
-export const useConvictions = () => convictions.slice()
-
-
-
-
-
+export const useConvictions = () => convictions.slice();
 
 export const getConvictions = () => {
-    return fetch("https://criminals.glassdale.us/crimes")
-        .then(response => response.json())
-        .then(convictionsArray => convictions = convictionsArray )
-}
-//             crimeData => {
-//                 //console.table(crimeData)
-//                 convictions = crimeData
-//             }
-//         )
-// }
-//  export const gotconvictions = convictions
-// console.log(gotconvictions)
-
+  return fetch("https://criminals.glassdale.us/crimes")
+  .then(response => response.json())
+  .then(convictionsArray => convictions = convictionsArray)
+};
