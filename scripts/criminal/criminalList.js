@@ -1,36 +1,33 @@
-import { getCriminals, useCriminals } from "./CriminalProvider.js"
-import { Criminal } from "./criminals.js"
-import { useConvictions } from "../convictions/ConvictionProvider.js"
-import { getFacilities, useFacilities  } from "../facility/FacilityProvider.js"
-import {getCriminalFacilities, useCriminalFacilities} from "../facility/CriminalFacilityProvider.js"
+import { getCriminals, useCriminals } from "./CriminalProvider.js";
+import { Criminal } from "./criminals.js";
+import { useConvictions } from "../convictions/ConvictionProvider.js";
+import { getFacilities, useFacilities } from "../facility/FacilityProvider.js";
+import {getCriminalFacilities, useCriminalFacilities} from "../facility/CriminalFacilityProvider.js";
 
-const eventHub = document.querySelector(".container")
-const criminalsContainer = document.querySelector(".criminalsContainer")
-const contentTarget = document.querySelector(".criminalsFacilityContainer")
-
+const eventHub = document.querySelector(".container");
+const criminalsContainer = document.querySelector(".criminalsContainer");
+const contentTarget = document.querySelector(".criminalsFacilityContainer");
 
 export const CriminalList = () => {
   // Kick off the fetching of both collections of data
   getFacilities()
-      .then(getCriminalFacilities)
-      .then(getCriminals)
-      .then(
-          () => {
-              // Pull in the data now that it has been fetched
-              const facilities = useFacilities()
-              const crimFac = useCriminalFacilities()
-              const criminals = useCriminals()
+    .then(getCriminalFacilities)
+    .then(getCriminals)
+    .then(() => {
+      // Pull in the data now that it has been fetched
+      const facilities = useFacilities();
+      const crimFac = useCriminalFacilities();
+      const criminals = useCriminals();
 
-              // Pass all three collections of data to render()
-              render(criminals, facilities, crimFac)
-          }
-      )
-}
+      // Pass all three collections of data to render()
+      render(criminals, facilities, crimFac);
+    });
+};
 const renderToDom = (criminalCollection) => {
-  let criminalsHTMLRepresentations = ""
+  let criminalsHTMLRepresentations = "";
 
   for (const criminal of criminalCollection) {
-    criminalsHTMLRepresentations += Criminal(criminal)
+    criminalsHTMLRepresentations += Criminal(criminal);
   }
 
   criminalsContainer.innerHTML = `
@@ -38,12 +35,11 @@ const renderToDom = (criminalCollection) => {
         <section class="criminalsList">
         ${criminalsHTMLRepresentations}
         </section>
-        `
-}
-
+        `;
+};
 
 // Listen for the "crimeChosen" custom event you dispatched in ConvictionSelect
-eventHub.addEventListener("crimeChosen", event => {
+eventHub.addEventListener("crimeChosen", (event) => {
   //console.log(event)
   if (event.detail.crimeThatWasChosen !== "0") {
     /* 
@@ -51,95 +47,91 @@ eventHub.addEventListener("crimeChosen", event => {
     */
 
     // Get a copy of the array of convictions from the data provider
-    const convictionsArray = useConvictions()
+    const convictionsArray = useConvictions();
 
     // Use the find method to get the first object in the convictions array that has the same id as the id of the chosen crime
-    const convictionThatWasChosen = convictionsArray.find(convictionObj => {
+    const convictionThatWasChosen = convictionsArray.find((convictionObj) => {
       //console.log(convictionObj)
-      return convictionObj.id === parseInt(event.detail.crimeThatWasChosen)
-    })
+      return convictionObj.id === parseInt(event.detail.crimeThatWasChosen);
+    });
 
-     // console.log(convictionThatWasChosen.name)
+    // console.log(convictionThatWasChosen.name)
     /*
         Filter the criminals application state down to the people that committed the crime
     */
-   
+
     // Get a copy of the array of criminals from the data provider
-    const criminalsArray = useCriminals()
+    const criminalsArray = useCriminals();
 
-    const chosenConvictionObject = convictionsArray.find(convictionObj => {
-      return convictionObj.id === parseInt(event.detail.crimeThatWasChosen)
+    const chosenConvictionObject = convictionsArray.find((convictionObj) => {
+      return convictionObj.id === parseInt(event.detail.crimeThatWasChosen);
+    });
 
-    })
-
-      //console.log(chosenConvictionObject.name)
+    //console.log(chosenConvictionObject.name)
     /*
       Now that we have the name of the chosen crime, filter the criminals data down to the people that committed the crime
     */
-    
-   const filteredCriminalsArray = criminalsArray.filter(criminalObj => {
-    
-    return criminalObj.conviction === convictionThatWasChosen.name
-  })
-  const facilities = useFacilities()
-  console.log(facilities)
-              const crimFac = useCriminalFacilities()
-              const criminals = useCriminals()
 
-              // Pass all three collections of data to render()
-              render(filteredCriminalsArray, facilities, crimFac)
-  // render(filteredCriminalsArray)
-    }
-      }
-      )
+    const filteredCriminalsArray = criminalsArray.filter((criminalObj) => {
+      return criminalObj.conviction === convictionThatWasChosen.name;
+    });
+    const facilities = useFacilities();
+    console.log(facilities);
+    const crimFac = useCriminalFacilities();
+    const criminals = useCriminals();
 
-    /*
+    // Pass all three collections of data to render()
+    render(filteredCriminalsArray, facilities, crimFac);
+    // render(filteredCriminalsArray)
+  }
+});
+
+/*
         Then invoke render() and pass the filtered collection as
         an argument
     */
 
-    
-
-eventHub.addEventListener("officerSelected", event => {
-  const officerName = event.detail.officer
-//console.log(event.detail.officer)
+eventHub.addEventListener("officerSelected", (event) => {
+  const officerName = event.detail.officer;
+  //console.log(event.detail.officer)
   // How can you get the criminals that were arrested by that officer?
-  const criminals = useCriminals()
-  const filteredCriminalsArray = criminals.filter (
-    criminalObject => {
-      if (criminalObject.arrestingOfficer === officerName) {
-        return true
-      }
+  const criminals = useCriminals();
+  const filteredCriminalsArray = criminals.filter((criminalObject) => {
+    if (criminalObject.arrestingOfficer === officerName) {
+      return true;
     }
-  )
+  });
 
   //Render filtered criminals to DOM
-  console.log(officerName)
-  const facilities = useFacilities()
-              const crimFac = useCriminalFacilities()
-              
+  console.log(officerName);
+  const facilities = useFacilities();
+  const crimFac = useCriminalFacilities();
 
-              // Pass all three collections of data to render()
-              render(filteredCriminalsArray, facilities, crimFac)
+  // Pass all three collections of data to render()
+  render(filteredCriminalsArray, facilities, crimFac);
   // renderToDom(filteredCriminalsArray)
-})
+});
 
 const render = (criminalsToRender, allFacilities, allRelationships) => {
   // Step 1 - Iterate all criminals
-  contentTarget.innerHTML = criminalsToRender.map(
-      (criminalObject) => {
-          // Step 2 - Filter all relationships to get only ones for this criminal
-          const facilityRelationshipsForThisCriminal = allRelationships.filter(cf => cf.criminalId === criminalObject.id)
+  contentTarget.innerHTML = criminalsToRender
+    .map((criminalObject) => {
+      // Step 2 - Filter all relationships to get only ones for this criminal
+      const facilityRelationshipsForThisCriminal = allRelationships.filter(
+        (cf) => cf.criminalId === criminalObject.id
+      );
 
-          // Step 3 - Convert the relationships to facilities with map()
-          const facilities = facilityRelationshipsForThisCriminal.map(cf => {
-            console.log(cf)
-              const matchingFacilityObject = allFacilities.find(facility => facility.id === cf.facilityId)
-              return matchingFacilityObject
-          })
+      // Step 3 - Convert the relationships to facilities with map()
+      const facilities = facilityRelationshipsForThisCriminal.map((cf) => {
+        // console.log(cf);
+        const matchingFacilityObject = allFacilities.find(
+          (facility) => facility.id === cf.facilityId
+        );
+        return matchingFacilityObject;
+      });
 
-          // Must pass the matching facilities to the Criminal component
-          return Criminal(criminalObject, facilities)
-      }
-  ).join("")
-}
+      // Must pass the matching facilities to the Criminal component
+      return Criminal(criminalObject, facilities);
+    })
+    .join("");
+};

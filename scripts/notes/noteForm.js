@@ -17,7 +17,7 @@ export const NoteForm = () => {
 }
 
 const render = (criminalsArray) => {
-    debugger
+   
     contentTarget.innerHTML = `
     
     <form class="criminalFormBox" action="">
@@ -60,7 +60,7 @@ eventHub.addEventListener("click", clickEvent => {
         const date = document.getElementById("note-date").value
         const intuition = document.getElementById("note-intuition").value
         const text = document.getElementById("note-text").value
-        // debugger
+        
         // Make a new object representation of a note
         const newNote = {
             // Key/value pairs here
@@ -70,7 +70,7 @@ eventHub.addEventListener("click", clickEvent => {
             "author": author,
             "intuition": intuition
         }
-        // debugger
+        
         // Change API state and application state
         saveNote(newNote)
     }
