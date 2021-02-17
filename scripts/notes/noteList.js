@@ -21,7 +21,7 @@ const render = (noteArray) => {
         // convert the notes objects to HTML with NoteHTMLConverter
 
     
-    contentTarget.innerHtml = `
+    contentTarget.innerHTML = `
     <h3>Case Notes</h3>
     <section class="noteslist">
     ${allNotesConvertedToStrings}
