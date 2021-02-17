@@ -35,15 +35,17 @@ export const AssociatesofCriminal = (criminalObj) => {
 //----This may break, i added customEvent inside of NoteList at line
 eventHub.addEventListener("showAssociatesClicked", customEvent => {
     const clickedAssociatesId = customEvent.detail.criminalIdTaco
-    console.log(customEvent.detail.criminalIdTaco)
+    
     const arrayOfCriminals = useCriminals()
-    console.log(arrayOfCriminals)
+    
+    
     //--- Error is here on line 42. the loop through the arrayOfCriminals to compare the id but something is wrong with the clickedAssociatesId
     const chosenCriminal = arrayOfCriminals.find((criminalObjectTaco) => criminalObjectTaco.id === clickedAssociatesId)
-    console.log(chosenCriminal)
-    AssociatesofCriminal(chosenCriminal)
-    })
     
+    AssociatesofCriminal(chosenCriminal)
+    
+    })
+    //--- I'm thinking I am passing the line 44 an array versus an object which is suppose to be an object according to the functin I built
 
     eventHub.addEventListener("click", event => {
         if (event.target.id === "alibi--close") {
