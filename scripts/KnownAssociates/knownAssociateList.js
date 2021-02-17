@@ -3,14 +3,14 @@ import { useCriminals } from "../criminal/CriminalProvider.js"
 import { KnownAssociate } from "../KnownAssociates/theAssociate.js"
 import { ShowAssociatesButton } from "../KnownAssociates/KnownAssociateButton.js"
 // Query the DOM for the element that your notes will be added to 
-const associateContainer = document.querySelector(".criminalsAssociates")
+const associateContainer = document.querySelector(".criminalsAssociatescontainer")
 const eventHub = document.querySelector(".container")
 
 
 // ---- Error: Cannot read property "name" of undefined. my criminalObj is showing empty at line 15
 
 export const AssociatesofCriminal = (criminalObj) => {
-   
+
     const AssociateHTMLRepresentations = `
     <div id="alibi" class="alibi--associate">
     <div class="alibi--placement">
@@ -22,12 +22,14 @@ export const AssociatesofCriminal = (criminalObj) => {
         </section>`
 
     }).join("")}
+    
     <button id=alibi--close">close</button>
         </div>
     </div>
     `
-
+    
     associateContainer.innerHtml = AssociateHTMLRepresentations
+    
 }
 
 
@@ -35,15 +37,17 @@ export const AssociatesofCriminal = (criminalObj) => {
 //----This may break, i added customEvent inside of NoteList at line
 eventHub.addEventListener("showAssociatesClicked", customEvent => {
     const clickedAssociatesId = customEvent.detail.criminalIdTaco
-    console.log(customEvent.detail.criminalIdTaco)
+    
     const arrayOfCriminals = useCriminals()
-    console.log(arrayOfCriminals)
+    
+    
     //--- Error is here on line 42. the loop through the arrayOfCriminals to compare the id but something is wrong with the clickedAssociatesId
     const chosenCriminal = arrayOfCriminals.find((criminalObjectTaco) => criminalObjectTaco.id === clickedAssociatesId)
-    console.log(chosenCriminal)
-    AssociatesofCriminal(chosenCriminal)
-    })
     
+    AssociatesofCriminal(chosenCriminal)
+    
+    })
+    //--- I'm thinking I am passing the line 44 an array versus an object which is suppose to be an object according to the functin I built
 
     eventHub.addEventListener("click", event => {
         if (event.target.id === "alibi--close") {

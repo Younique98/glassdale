@@ -1,6 +1,6 @@
 
 export const KnownAssociate = (associate) => {
-     
+    
     return `
     <div class = "associate">
     <h3>${associate.known_associates[0].name}</h3>

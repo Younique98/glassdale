@@ -6,10 +6,10 @@ const eventHub = document.querySelector(".container");
 eventHub.addEventListener("click", (clickEvent) => {
   if (clickEvent.target.id.startsWith("associates--")) {
     const [prefix, criminalId] = clickEvent.target.id.split("--");
-    console.log(criminalId)
+    
         const customEvent = new CustomEvent("showAssociatesClicked", {
       detail: { 
-          criminalIdTaco: criminalId
+          criminalIdTaco: parseInt(criminalId)
          },
     });
     eventHub.dispatchEvent(customEvent);
@@ -18,7 +18,8 @@ eventHub.addEventListener("click", (clickEvent) => {
 
 // --- pulls the id off the criminalList.js at line 126
 export const ShowAssociatesButton = (criminalObj) => {
-    console.log(criminalObj)
+
+    
    return `<button id="associates--${criminalObj.id}">Associate Alibis</button>` 
   
 };
