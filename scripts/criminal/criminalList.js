@@ -20,14 +20,24 @@ export const CriminalList = () => {
       const criminals = useCriminals();
 
       // Pass all three collections of data to render()
-      render(criminals, facilities, crimFac);
+      render(criminals, crimFac, facilities );
     });
 };
+
 const renderToDom = (criminalCollection) => {
   let criminalsHTMLRepresentations = "";
 
   for (const criminal of criminalCollection) {
-    criminalsHTMLRepresentations += Criminal(criminal);
+    // filter all relationships to get only ones for this particular criminal
+    const arrayOfCrimFacObjects = crimFacColection.filter(criminalFacility => criminal.id === criminalFacility.criminalId)
+    // convert the relationships to facilities with map()
+      const arrayOfFaciltyObjects = arrayOfCrimFacObjects.map(criminalFacilty => {
+
+        const relatedFaciltyObject = facilityCollection.find(facility => facility.id === criminalFacilty.facilityId)
+        return relatedFaciltyObject
+      })
+
+    criminalsHTMLRepresentations += Criminal(criminal, arrayOfFaciltyObjects);
   }
 
   criminalsContainer.innerHTML = `
