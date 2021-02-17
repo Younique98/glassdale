@@ -3,7 +3,7 @@ import { useCriminals } from "../criminal/CriminalProvider.js"
 import { KnownAssociate } from "../KnownAssociates/theAssociate.js"
 import { ShowAssociatesButton } from "../KnownAssociates/KnownAssociateButton.js"
 // Query the DOM for the element that your notes will be added to 
-const associateContainer = document.querySelector(".criminalsAssociates")
+const associateContainer = document.querySelector(".criminalsAssociatescontainer")
 const eventHub = document.querySelector(".container")
 
 
@@ -29,7 +29,7 @@ export const AssociatesofCriminal = (criminalObj) => {
     `
     
     associateContainer.innerHtml = AssociateHTMLRepresentations
-    debugger
+    
 }
 
 

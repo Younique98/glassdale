@@ -19,7 +19,7 @@ eventHub.addEventListener("click", (clickEvent) => {
 // --- pulls the id off the criminalList.js at line 126
 export const ShowAssociatesButton = (criminalObj) => {
 
-    debugger
+    
    return `<button id="associates--${criminalObj.id}">Associate Alibis</button>` 
   
 };
