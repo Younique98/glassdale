@@ -18,5 +18,5 @@ OfficerSelect()
 NoteForm()
 ShowNoteButton() 
 
-// ShowAssociatesButton()
+ShowAssociatesButton()
 useFacilities()

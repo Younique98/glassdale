@@ -10,7 +10,7 @@ const eventHub = document.querySelector(".container")
 // ---- Error: Cannot read property "name" of undefined. my criminalObj is showing empty at line 15
 
 export const AssociatesofCriminal = (criminalObj) => {
-   
+//    debugger
     const AssociateHTMLRepresentations = `
     <div id="alibi" class="alibi--associate">
     <div class="alibi--placement">
@@ -26,7 +26,7 @@ export const AssociatesofCriminal = (criminalObj) => {
         </div>
     </div>
     `
-
+    // debugger
     associateContainer.innerHtml = AssociateHTMLRepresentations
 }
 
